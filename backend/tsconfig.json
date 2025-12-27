@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    
+    "target": "ESNext",                                /* Ustawienie nowoczesnego JS */
+    "module": "NodeNext",                              /* Zgodność z nowoczesnym Node.js */
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",                                /* Miejsce skompilowanych plików */
+    "rootDir": "./src",                                /* Miejsce plików źródłowych */
+    "baseUrl": "./",                                   /* Baza dla ścieżek bezwzględnych */
+    
+
+    "strict": true,                                    /* Włącza wszystkie rygorystyczne testy */
+    "noImplicitAny": true,                             /* Zabrania używania 'any' bez jawnej deklaracji */
+    "strictNullChecks": true,                          /* null i undefined są traktowane osobno */
+    "strictFunctionTypes": true,
+    "noUnusedLocals": true,                            /* Błąd, gdy zmienna nie jest używana */
+    "noUnusedParameters": true,                        /* Błąd, gdy parametr funkcji nie jest używany */
+    "noImplicitReturns": true,                         /* Każda ścieżka funkcji musi coś zwracać */
+    
+    
+    "esModuleInterop": true,                           /* Lepsza kompatybilność z modułami CommonJS */
+    "forceConsistentCasingInFileNames": true,          /* Ważne przy pracy w zespole (Windows vs Linux) */
+    "skipLibCheck": true,                              /* Przyspiesza kompilację poprzez pomijanie typów w node_modules */
+    "resolveJsonModule": true                          /* Pozwala na importowanie plików .json */
+  },
+  "include": ["src/**/*"],                             /* Jakie pliki mają być kompilowane */
+  "exclude": ["node_modules", "**/*.test.ts"]          /* Wykluczenia */
+}
