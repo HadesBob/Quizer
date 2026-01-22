@@ -1,0 +1,45 @@
+src/
+├── app/
+│   ├── store.ts
+│   ├── hooks.ts
+│   └── providers.tsx
+│
+├── features/
+│   ├── auth/
+│   │   ├── auth.slice.ts
+│   │   ├── auth.service.ts
+│   │   └── auth.selectors.ts
+│   │
+│   ├── lobby/
+│   │   ├── lobby.slice.ts
+│   │   ├── lobby.thunks.ts
+│   │   ├── lobby.service.ts
+│   │   ├── lobby.realtime.ts
+│   │   └── components/
+│   │
+│   ├── game/
+│   │   ├── game.slice.ts
+│   │   ├── game.logic.ts
+│   │   ├── game.socket.ts
+│   │   └── components/
+│   │
+│   └── ranking/
+│       ├── ranking.slice.ts
+│
+├── domain/
+│   ├── canJoinRoom.ts
+│   ├── calculateScore.ts
+│   └── gameRules.ts
+│
+├── infrastructure/
+│   ├── supabase.ts
+│   ├── websocket.ts
+│   └── api.ts
+│
+├── shared/
+│   ├── ui/
+│   ├── hooks/
+│   └── utils/
+│
+├── App.tsx
+└── main.tsx

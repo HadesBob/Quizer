@@ -1,1 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap');
 @import "tailwindcss";
+
+
+
+@theme {
+  
+  --color-brand-primary: #181818;
+  --background-image-gradient-primary: linear-gradient(175deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+
+  
+  --font-primary: "Trade Winds", system-ui;
+  --font-secondary: "Black Ops One", system-ui;
+ 
+
+}
+
+
+
+.card {
+  --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+  width: 290px;
+  height: 154px;
+  padding: 5px;
+  border-radius: 1rem;
+  overflow: visible;
+  background: var(--background);
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: 15px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.85);
+  filter: blur(25px);
+  background: var(--background);
+  transition: opacity .5s;
+  opacity: 0.5; 
+}
+
+.card-info {
+  --color: #181818;
+  background: var(--color);
+  color: #f7ba2b; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  border-radius: .7rem;
+  gap: 8px;
+}
+
+.card .title {
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.card .status {
+  font-size: 0.8rem;
+  color: #ea5358; /* Czerwony akcent dla statusu */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card:hover::after {
+  opacity: 1; /* Mocniejszy blask pod kartą */
+}
+
+/* Usunęliśmy .card:hover .card-info { color: ... }, więc tekst się nie zmienia */
+
+

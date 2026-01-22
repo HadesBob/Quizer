@@ -1,37 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { useAppDispatch } from './app/hooks';
+import { setSession, fetchProfile } from './features/auth/authSlice';
 import { supabase } from './lib/supabase';
-import { Auth } from './components/Auth';
-import type { Session } from '@supabase/supabase-js';
+import { router } from './app/router';
+
 
 function App() {
-  const [session, setSession] = useState<Session | null>(null);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // Pobierz aktualną sesję
+    // 1. Sprawdź bieżącą sesję przy starcie aplikacji
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+      dispatch(setSession(session));
+      if (session?.user) {
+        dispatch(fetchProfile(session.user.id));
+      }
     });
 
-    // Słuchaj zmian w auth (login/logout)
+    // 2. Subskrybuj zmiany stanu (Login, Logout, Token Refresh)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
+      dispatch(setSession(session));
+      if (session?.user) {
+        dispatch(fetchProfile(session.user.id));
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [dispatch]);
 
-  return (
-    <div className="container">
-      {!session ? (
-        <Auth />
-      ) : (
-        <div>
-          <h1>Witaj, {session.user.email}</h1>
-          <button onClick={() => supabase.auth.signOut()}>Wyloguj</button>
-        </div>
-      )}
-    </div>
-  );
+  // Renderujemy RouterProvider, który zarządza całą nawigacją
+  return <RouterProvider router={router} />;
 }
 
 export default App;
